@@ -35,18 +35,11 @@ export default function ContactPage() {
             href="https://wa.me/919667545342?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20EcoSevika%20products."
             target="_blank"
             rel="noopener noreferrer"
-            className="block p-8 transition-shadow duration-300"
+            className="contact-card block p-8"
             style={{
               backgroundColor: "white",
               border: "1px solid var(--tan)",
-              boxShadow: "0 1px 4px rgba(53,64,36,0.05)",
             }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLElement).style.boxShadow = "0 6px 24px rgba(53,64,36,0.12)")
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLElement).style.boxShadow = "0 1px 4px rgba(53,64,36,0.05)")
-            }
           >
             <div
               className="w-12 h-12 rounded-full flex items-center justify-center mb-5"
@@ -76,18 +69,11 @@ export default function ContactPage() {
           {/* Email */}
           <a
             href="mailto:rotaractclubofdynamicleaders@gmail.com?subject=EcoSevika%20Enquiry"
-            className="block p-8 transition-shadow duration-300"
+            className="contact-card block p-8"
             style={{
               backgroundColor: "white",
               border: "1px solid var(--tan)",
-              boxShadow: "0 1px 4px rgba(53,64,36,0.05)",
             }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLElement).style.boxShadow = "0 6px 24px rgba(53,64,36,0.12)")
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLElement).style.boxShadow = "0 1px 4px rgba(53,64,36,0.05)")
-            }
           >
             <div
               className="w-12 h-12 rounded-full flex items-center justify-center mb-5"
