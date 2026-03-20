@@ -1,69 +1,72 @@
-"use client";
-
 import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: "var(--kombu-green)", color: "var(--bone)" }}>
-      {/* Leaf SVG divider */}
-      <div className="flex justify-center pt-10 pb-4 opacity-30">
-        <svg width="120" height="24" viewBox="0 0 120 24" fill="none">
-          <line x1="0" y1="12" x2="50" y2="12" stroke="#E5D7C4" strokeWidth="0.8" />
-          <path
-            d="M60 4 C64 4 68 8 68 12 C68 16 64 20 60 20 C56 20 52 16 52 12 C52 8 56 4 60 4 Z"
-            stroke="#E5D7C4"
-            strokeWidth="0.8"
-            fill="none"
-          />
-          <line x1="60" y1="4" x2="60" y2="20" stroke="#E5D7C4" strokeWidth="0.5" />
-          <line x1="70" y1="12" x2="120" y2="12" stroke="#E5D7C4" strokeWidth="0.8" />
-        </svg>
+    <footer style={{ backgroundColor: "var(--kombu-green)" }}>
+      {/* Brand statement — large display */}
+      <div
+        className="max-w-7xl mx-auto px-8 pt-20 pb-10"
+        style={{ borderBottom: "1px solid rgba(229,215,196,0.1)" }}
+      >
+        <p
+          className="font-display leading-none mb-2"
+          style={{
+            fontSize: "clamp(3rem, 8vw, 7rem)",
+            fontWeight: 300,
+            color: "rgba(229,215,196,0.12)",
+            letterSpacing: "-0.01em",
+          }}
+        >
+          EcoSevika
+        </p>
+        <p className="tagline" style={{ color: "var(--moss-green)" }}>
+          Threads of Change
+        </p>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+      {/* Links grid */}
+      <div className="max-w-7xl mx-auto px-8 py-14 grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* Brand */}
         <div>
-          <h3
-            className="font-display text-2xl mb-2"
-            style={{ color: "var(--bone)", fontWeight: 600 }}
+          <p
+            className="font-display mb-2"
+            style={{ fontSize: "1.4rem", fontWeight: 400, fontStyle: "italic", color: "var(--bone)" }}
           >
             EcoSevika
-          </h3>
-          <p className="tagline mb-4" style={{ color: "var(--moss-green)" }}>
+          </p>
+          <p
+            className="tagline mb-5"
+            style={{ color: "var(--moss-green)", fontSize: "0.52rem" }}
+          >
             Threads of Change
           </p>
-          <p className="text-xs leading-relaxed" style={{ color: "var(--tan)", maxWidth: "220px" }}>
+          <p
+            style={{
+              fontFamily: "Montserrat, sans-serif",
+              fontSize: "0.68rem",
+              color: "var(--tan)",
+              opacity: 0.7,
+              lineHeight: 1.8,
+              maxWidth: "200px",
+            }}
+          >
             Upcycled fabric. Empowered women. A kinder planet.
           </p>
         </div>
 
         {/* Navigation */}
         <div>
-          <p
-            className="tagline mb-5"
-            style={{ color: "var(--tan)" }}
-          >
+          <p className="tagline mb-6" style={{ color: "var(--tan)", opacity: 0.5, fontSize: "0.52rem" }}>
             Explore
           </p>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3.5">
             {[
               { href: "/", label: "Home" },
               { href: "/products", label: "Products" },
               { href: "/story", label: "Our Story" },
               { href: "/contact", label: "Contact" },
             ].map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="text-xs transition-colors duration-200"
-                style={{ color: "var(--bone)", opacity: 0.75 }}
-                onMouseEnter={(e) =>
-                  ((e.target as HTMLElement).style.opacity = "1")
-                }
-                onMouseLeave={(e) =>
-                  ((e.target as HTMLElement).style.opacity = "0.75")
-                }
-              >
+              <Link key={l.href} href={l.href} className="footer-link">
                 {l.label}
               </Link>
             ))}
@@ -72,27 +75,33 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <p className="tagline mb-5" style={{ color: "var(--tan)" }}>
+          <p className="tagline mb-6" style={{ color: "var(--tan)", opacity: 0.5, fontSize: "0.52rem" }}>
             Get in Touch
           </p>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3.5">
             <a
               href="https://wa.me/919667545342"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs transition-opacity duration-200"
-              style={{ color: "var(--bone)", opacity: 0.75 }}
+              className="footer-link"
             >
               WhatsApp: +91 96675 45342
             </a>
             <a
-              href="mailto:rotaractclubofdynamicleaders@gmail.com"
-              className="text-xs transition-opacity duration-200"
-              style={{ color: "var(--bone)", opacity: 0.75 }}
+              href="mailto:teamecosevika@gmail.com"
+              className="footer-link"
+              style={{ wordBreak: "break-all" }}
             >
-              rotaractclubofdynamicleaders@gmail.com
+              teamecosevika@gmail.com
             </a>
-            <p className="text-xs" style={{ color: "var(--tan)", opacity: 0.6 }}>
+            <p
+              style={{
+                fontFamily: "Montserrat, sans-serif",
+                fontSize: "0.62rem",
+                color: "var(--tan)",
+                opacity: 0.45,
+              }}
+            >
               Delhi NCR, India
             </p>
           </div>
@@ -101,20 +110,40 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div
-        className="border-t py-5 text-center"
-        style={{ borderColor: "rgba(229,215,196,0.15)" }}
+        className="py-5 px-8 flex flex-col md:flex-row items-center justify-between gap-2"
+        style={{ borderTop: "1px solid rgba(229,215,196,0.08)" }}
       >
-        <p className="text-xs" style={{ color: "var(--tan)", opacity: 0.6 }}>
+        <p
+          style={{
+            fontFamily: "Montserrat, sans-serif",
+            fontSize: "0.6rem",
+            color: "var(--tan)",
+            opacity: 0.4,
+            letterSpacing: "0.06em",
+          }}
+        >
           A{" "}
           <a
             href="https://racddl.com"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ opacity: 0.9, textDecoration: "underline" }}
+            className="footer-link"
+            style={{ opacity: 0.9, textDecoration: "underline", textUnderlineOffset: "2px" }}
           >
             Rotaract Club of Delhi Dynamic Leaders
           </a>{" "}
           Initiative &mdash; RID 3011
+        </p>
+        <p
+          style={{
+            fontFamily: "Montserrat, sans-serif",
+            fontSize: "0.6rem",
+            color: "var(--tan)",
+            opacity: 0.3,
+            letterSpacing: "0.06em",
+          }}
+        >
+          &copy; {new Date().getFullYear()} EcoSevika
         </p>
       </div>
     </footer>

@@ -6,9 +6,9 @@ import ProductCard from "@/components/ProductCard";
 const categories = [
   {
     id: "upcycled-bags",
+    label: "I",
     name: "Upcycled Bags",
-    emoji: "🛍",
-    bg: "linear-gradient(135deg, #E5D7C4 0%, #CFBB99 100%)",
+    bg: "var(--bone)",
     products: [
       {
         name: "Upcycled Tote Bag",
@@ -32,9 +32,9 @@ const categories = [
   },
   {
     id: "canvas-bags",
+    label: "II",
     name: "Canvas Cloth Bags",
-    emoji: "🎒",
-    bg: "linear-gradient(135deg, #d4dcc8 0%, #b8c4a8 100%)",
+    bg: "#dce4d2",
     products: [
       {
         name: "Natural Canvas Tote",
@@ -58,9 +58,9 @@ const categories = [
   },
   {
     id: "pouches",
+    label: "III",
     name: "Pouches",
-    emoji: "👝",
-    bg: "linear-gradient(135deg, #dcd4c8 0%, #c8b898 100%)",
+    bg: "#e4dcd0",
     products: [
       {
         name: "Pencil Pouch",
@@ -84,9 +84,9 @@ const categories = [
   },
   {
     id: "aprons",
+    label: "IV",
     name: "Aprons",
-    emoji: "👨‍🍳",
-    bg: "linear-gradient(135deg, #c8d4c0 0%, #a8b898 100%)",
+    bg: "#d4dcc8",
     products: [
       {
         name: "Kitchen Apron",
@@ -114,106 +114,126 @@ export default function ProductsPage() {
   const [active, setActive] = useState<string>("all");
 
   const visibleCategories =
-    active === "all"
-      ? categories
-      : categories.filter((c) => c.id === active);
+    active === "all" ? categories : categories.filter((c) => c.id === active);
 
   return (
     <div style={{ backgroundColor: "var(--warm-white)", minHeight: "100vh" }}>
-      {/* Header */}
+      {/* ── Header ─────────────────────────────────────── */}
       <section
-        className="py-20 px-6 text-center"
-        style={{
-          background: "linear-gradient(135deg, #E5D7C4 0%, #F5F0E8 60%, #dce8d4 100%)",
-        }}
+        className="py-24 px-8"
+        style={{ backgroundColor: "var(--bone)" }}
       >
-        <p className="tagline mb-3" style={{ color: "var(--moss-green)" }}>
-          Handmade with care
-        </p>
-        <h1
-          className="font-display mb-4"
-          style={{
-            fontSize: "clamp(2.2rem, 5vw, 4rem)",
-            color: "var(--kombu-green)",
-            fontWeight: 600,
-          }}
-        >
-          Our Products
-        </h1>
-        <div className="section-divider mb-5" />
-        <p
-          className="text-sm max-w-lg mx-auto leading-relaxed"
-          style={{ color: "var(--cafe-noir)", opacity: 0.8 }}
-        >
-          Photos are coming soon — each product is made to order. Enquire via
-          WhatsApp and we&apos;ll share details, customisation options, and pricing.
-        </p>
+        <div className="max-w-7xl mx-auto">
+          <p className="tagline mb-5" style={{ color: "var(--moss-green)" }}>
+            Handmade with care
+          </p>
+          <h1
+            className="font-display leading-none mb-6"
+            style={{
+              fontSize: "clamp(3rem, 7vw, 6rem)",
+              fontWeight: 300,
+              color: "var(--kombu-green)",
+            }}
+          >
+            Our
+            <em style={{ fontStyle: "italic" }}> Products</em>
+          </h1>
+          <div
+            className="mb-7"
+            style={{ width: "36px", height: "1px", backgroundColor: "var(--moss-green)" }}
+          />
+          <p
+            style={{
+              fontFamily: "Montserrat, sans-serif",
+              fontSize: "0.75rem",
+              color: "var(--cafe-noir)",
+              opacity: 0.7,
+              maxWidth: "460px",
+              lineHeight: 1.85,
+            }}
+          >
+            Photos coming soon — each product is made to order. Enquire via
+            WhatsApp and we&apos;ll share details, customisation options, and pricing.
+          </p>
+        </div>
       </section>
 
-      {/* Filter tabs */}
+      {/* ── Filter tabs ────────────────────────────────── */}
       <div
-        className="sticky top-16 z-40 py-4 px-6 flex flex-wrap gap-2 justify-center"
-        style={{ backgroundColor: "var(--warm-white)", borderBottom: "1px solid var(--tan)" }}
+        className="sticky top-16 z-40 py-4 px-8 flex flex-wrap gap-2"
+        style={{
+          backgroundColor: "var(--warm-white)",
+          borderBottom: "1px solid rgba(207,187,153,0.4)",
+        }}
       >
-        <button
-          onClick={() => setActive("all")}
-          className="px-4 py-1.5 text-xs font-semibold uppercase tracking-widest transition-all duration-200 rounded-sm"
-          style={{
-            backgroundColor: active === "all" ? "var(--kombu-green)" : "transparent",
-            color: active === "all" ? "var(--bone)" : "var(--kombu-green)",
-            border: "1.5px solid var(--kombu-green)",
-            fontFamily: "Montserrat, sans-serif",
-            letterSpacing: "0.12em",
-          }}
-        >
-          All
-        </button>
-        {categories.map((cat) => (
+        {[{ id: "all", name: "All" }, ...categories].map((cat) => (
           <button
             key={cat.id}
             onClick={() => setActive(cat.id)}
-            className="px-4 py-1.5 text-xs font-semibold transition-all duration-200 rounded-sm"
             style={{
+              fontFamily: "Montserrat, sans-serif",
+              fontSize: "0.58rem",
+              fontWeight: 600,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              padding: "0.55rem 1.4rem",
+              cursor: "pointer",
               backgroundColor: active === cat.id ? "var(--kombu-green)" : "transparent",
               color: active === cat.id ? "var(--bone)" : "var(--kombu-green)",
-              border: "1.5px solid var(--kombu-green)",
-              fontFamily: "Montserrat, sans-serif",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
+              border: "1px solid var(--kombu-green)",
+              transition: "background-color 0.25s ease, color 0.25s ease",
             }}
           >
-            {cat.emoji} {cat.name}
+            {cat.name}
           </button>
         ))}
       </div>
 
-      {/* Products */}
-      <div className="max-w-6xl mx-auto px-6 py-14">
+      {/* ── Products ───────────────────────────────────── */}
+      <div className="max-w-7xl mx-auto px-8 py-16">
         {visibleCategories.map((cat) => (
-          <div key={cat.id} className="mb-16">
-            <div className="flex items-center gap-4 mb-8">
-              <span className="text-3xl">{cat.emoji}</span>
+          <div key={cat.id} className="mb-20">
+            {/* Category heading */}
+            <div className="flex items-baseline gap-5 mb-10">
+              <span
+                className="font-display"
+                style={{
+                  fontSize: "4rem",
+                  fontWeight: 300,
+                  fontStyle: "italic",
+                  color: "rgba(53,64,36,0.1)",
+                  lineHeight: 1,
+                  userSelect: "none",
+                }}
+              >
+                {cat.label}
+              </span>
               <div>
                 <h2
-                  className="font-subheading text-xl"
-                  style={{ color: "var(--kombu-green)", fontWeight: 600 }}
+                  className="font-display"
+                  style={{
+                    fontSize: "1.6rem",
+                    fontWeight: 500,
+                    color: "var(--kombu-green)",
+                    lineHeight: 1,
+                  }}
                 >
                   {cat.name}
                 </h2>
               </div>
               <div
-                className="flex-1 h-px ml-4"
-                style={{ backgroundColor: "var(--tan)" }}
+                className="flex-1"
+                style={{ height: "1px", backgroundColor: "rgba(207,187,153,0.6)" }}
               />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {cat.products.map((p) => (
                 <ProductCard
                   key={p.name}
                   name={p.name}
                   description={p.description}
-                  categoryEmoji={cat.emoji}
-                  categoryColor={cat.bg}
+                  categoryBg={cat.bg}
                   tags={p.tags}
                 />
               ))}
