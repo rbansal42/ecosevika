@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { whatsappUrl } from "@/lib/constants";
 
 export default function Footer() {
   return (
@@ -80,7 +81,7 @@ export default function Footer() {
           </p>
           <div className="flex flex-col gap-3.5">
             <a
-              href="https://wa.me/919667545342"
+              href={whatsappUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className="footer-link"
