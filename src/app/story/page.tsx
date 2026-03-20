@@ -110,9 +110,9 @@ export default function StoryPage() {
                 className="flex gap-10 items-start"
                 style={{ paddingBottom: i < milestones.length - 1 ? "4rem" : 0 }}
               >
-                {/* Number node */}
+                {/* Number node — square on md+, dot on mobile */}
                 <div
-                  className="relative z-10 flex-shrink-0 hidden md:flex items-center justify-center"
+                  className="relative z-10 flex-shrink-0 flex items-center justify-center"
                   style={{
                     width: "44px",
                     height: "44px",
@@ -120,8 +120,14 @@ export default function StoryPage() {
                     border: "1px solid rgba(207,187,153,0.6)",
                   }}
                 >
+                  {/* Mobile: simple dot */}
                   <span
-                    className="font-display"
+                    className="md:hidden block rounded-full"
+                    style={{ width: "8px", height: "8px", backgroundColor: "var(--moss-green)" }}
+                  />
+                  {/* Desktop: roman numeral */}
+                  <span
+                    className="hidden md:block font-display"
                     style={{
                       fontSize: "1rem",
                       fontWeight: 400,
@@ -275,12 +281,8 @@ export default function StoryPage() {
               Buy a product. Donate fabric. Spread the word. Every action,
               however small, is a thread in the larger fabric of change.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/products"
-                className="btn-primary"
-                style={{ backgroundColor: "var(--bone)", color: "var(--kombu-green)", borderColor: "var(--bone)" }}
-              >
+            <div className="btn-group">
+              <Link href="/products" className="btn-primary-bone">
                 Shop Now
               </Link>
               <Link href="/contact" className="btn-outline-bone">

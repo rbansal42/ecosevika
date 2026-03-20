@@ -2,10 +2,18 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Scroll-lock when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
 
   const links = [
     { href: "/", label: "Home" },
@@ -25,8 +33,8 @@ export default function Navbar() {
           <Image
             src="/logo.jpg"
             alt="EcoSevika — Threads of Change"
-            width={120}
-            height={120}
+            width={160}
+            height={52}
             className="object-contain"
             style={{ height: "52px", width: "auto" }}
             priority
@@ -36,14 +44,18 @@ export default function Navbar() {
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-10">
           {links.map((l) => (
-            <Link key={l.href} href={l.href} className="nav-link">
+            <Link
+              key={l.href}
+              href={l.href}
+              className={`nav-link${pathname === l.href ? " nav-link--active" : ""}`}
+            >
               {l.label}
             </Link>
           ))}
           <Link
             href="/products"
             className="btn-primary"
-            style={{ fontSize: "0.58rem", padding: "0.7rem 1.8rem" }}
+            style={{ fontSize: "0.65rem", padding: "0.7rem 1.8rem" }}
           >
             Shop Now
           </Link>
@@ -54,6 +66,7 @@ export default function Navbar() {
           className="md:hidden flex flex-col gap-1.5 p-2"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           <span
             className="block w-5 h-px transition-all duration-300"
@@ -89,7 +102,7 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              className="nav-link"
+              className={`nav-link${pathname === l.href ? " nav-link--active" : ""}`}
               onClick={() => setOpen(false)}
             >
               {l.label}

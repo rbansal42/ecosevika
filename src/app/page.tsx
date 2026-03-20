@@ -201,27 +201,15 @@ export default function Home() {
               </p>
 
               <h1
-                className="font-display animate-fade-up delay-2 leading-none mb-2"
+                className="font-display animate-fade-up delay-2 leading-none mb-10"
                 style={{
                   fontSize: "clamp(3.8rem, 8vw, 7rem)",
                   fontWeight: 300,
-                  color: "var(--kombu-green)",
                   letterSpacing: "-0.01em",
                 }}
               >
-                Handcrafted
-              </h1>
-              <h1
-                className="font-display animate-fade-up delay-3 leading-none mb-10"
-                style={{
-                  fontSize: "clamp(3.8rem, 8vw, 7rem)",
-                  fontWeight: 300,
-                  fontStyle: "italic",
-                  color: "var(--cafe-noir)",
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                with purpose.
+                <span style={{ color: "var(--kombu-green)", display: "block" }}>Handcrafted</span>
+                <span style={{ color: "var(--cafe-noir)", fontStyle: "italic", display: "block" }}>with purpose.</span>
               </h1>
 
               <div
@@ -245,7 +233,7 @@ export default function Home() {
                 Buy with purpose. Wear with meaning.
               </p>
 
-              <div className="animate-fade-up delay-5 flex flex-wrap gap-4">
+              <div className="animate-fade-up delay-5 btn-group">
                 <Link href="/products" className="btn-primary">
                   Explore Products
                 </Link>
@@ -298,10 +286,7 @@ export default function Home() {
             ].map((item, i) => (
               <div
                 key={item.title}
-                className="px-10 py-12"
-                style={{
-                  borderLeft: i > 0 ? "1px solid rgba(229,215,196,0.12)" : "none",
-                }}
+                className={`px-10 py-12${i > 0 ? " pillar-separator" : ""}`}
               >
                 <p
                   className="font-display mb-5"
@@ -613,7 +598,7 @@ export default function Home() {
                 We&apos;ll get back to you promptly with details,
                 customisation options, and pricing.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="btn-group">
                 <Link href="/products" className="btn-primary">
                   Browse Products
                 </Link>

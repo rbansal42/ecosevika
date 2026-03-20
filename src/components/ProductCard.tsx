@@ -24,12 +24,12 @@ export default function ProductCard({
         border: "1px solid rgba(207,187,153,0.5)",
       }}
     >
-      {/* Placeholder visual — name as ghost text */}
+      {/* Placeholder visual */}
       <div
-        className="w-full relative overflow-hidden flex items-center justify-center"
+        className="w-full relative overflow-hidden flex flex-col items-center justify-center gap-3"
         style={{ backgroundColor: categoryBg, height: "200px" }}
       >
-        {/* Woven texture lines */}
+        {/* Woven texture */}
         <svg
           viewBox="0 0 200 200"
           className="absolute inset-0 w-full h-full"
@@ -56,17 +56,32 @@ export default function ProductCard({
 
         {/* Ghost product name */}
         <p
-          className="font-display relative z-10 text-center px-4 leading-none"
+          className="font-display relative z-10 text-center px-4"
           style={{
             fontSize: "1.1rem",
             fontWeight: 400,
             fontStyle: "italic",
             color: "var(--kombu-green)",
-            opacity: 0.4,
+            opacity: 0.35,
             lineHeight: 1.3,
           }}
         >
           {name}
+        </p>
+
+        {/* Made-to-order badge */}
+        <p
+          className="relative z-10 tagline"
+          style={{
+            fontSize: "0.6rem",
+            letterSpacing: "0.18em",
+            color: "var(--kombu-green)",
+            opacity: 0.5,
+            backgroundColor: "rgba(245,240,232,0.7)",
+            padding: "0.25rem 0.75rem",
+          }}
+        >
+          Made to order · Photo coming soon
         </p>
       </div>
 
@@ -86,7 +101,7 @@ export default function ProductCard({
           className="flex-1 mb-4 leading-relaxed"
           style={{
             fontFamily: "Montserrat, sans-serif",
-            fontSize: "0.68rem",
+            fontSize: "0.75rem",
             color: "var(--cafe-noir)",
             opacity: 0.75,
             lineHeight: 1.8,
@@ -95,15 +110,19 @@ export default function ProductCard({
           {description}
         </p>
 
-        {/* Tags */}
+        {/* Tags — semantic list */}
         {tags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-5">
+          <ul
+            role="list"
+            className="flex flex-wrap gap-1.5 mb-5"
+            style={{ listStyle: "none", padding: 0, margin: 0 }}
+          >
             {tags.map((tag) => (
-              <span
+              <li
                 key={tag}
                 style={{
                   fontFamily: "Montserrat, sans-serif",
-                  fontSize: "0.55rem",
+                  fontSize: "0.62rem",
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   color: "var(--moss-green)",
@@ -113,9 +132,9 @@ export default function ProductCard({
                 }}
               >
                 {tag}
-              </span>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
 
         {/* WhatsApp CTA */}
