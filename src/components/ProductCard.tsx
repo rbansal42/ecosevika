@@ -20,20 +20,11 @@ export default function ProductCard({
 
   return (
     <div
-      className="flex flex-col rounded-sm overflow-hidden transition-shadow duration-300"
+      className="product-card flex flex-col rounded-sm overflow-hidden"
       style={{
         backgroundColor: "white",
         border: "1px solid var(--tan)",
-        boxShadow: "0 1px 4px rgba(53,64,36,0.06)",
       }}
-      onMouseEnter={(e) =>
-        ((e.currentTarget as HTMLElement).style.boxShadow =
-          "0 6px 24px rgba(53,64,36,0.13)")
-      }
-      onMouseLeave={(e) =>
-        ((e.currentTarget as HTMLElement).style.boxShadow =
-          "0 1px 4px rgba(53,64,36,0.06)")
-      }
     >
       {/* Placeholder image */}
       <div
