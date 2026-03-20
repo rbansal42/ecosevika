@@ -1,11 +1,6 @@
-import type { CSSProperties } from "react";
+import type { IllustrationProps } from "./types";
 
-interface Props {
-  className?: string;
-  style?: CSSProperties;
-}
-
-export default function CanvasIllustration({ className, style }: Props) {
+export default function CanvasIllustration({ className, style }: IllustrationProps) {
   return (
     <svg viewBox="0 0 160 160" fill="none" className={className} style={style} aria-hidden="true">
       <rect x="40" y="60" width="80" height="75" rx="1" stroke="#354024" strokeWidth="1.5" />
