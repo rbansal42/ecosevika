@@ -16,51 +16,35 @@ export default function Navbar() {
 
   return (
     <nav
-      style={{ backgroundColor: "var(--warm-white)", borderBottom: "1px solid var(--tan)" }}
+      style={{ backgroundColor: "var(--warm-white)", borderBottom: "1px solid rgba(207,187,153,0.4)" }}
       className="sticky top-0 z-50"
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/">
           <Image
             src="/logo.jpg"
-            alt="EcoSevika"
-            width={44}
-            height={44}
-            className="rounded-full object-cover"
+            alt="EcoSevika — Threads of Change"
+            width={120}
+            height={120}
+            className="object-contain"
+            style={{ height: "52px", width: "auto" }}
+            priority
           />
-          <div>
-            <p
-              className="font-display text-xl leading-none"
-              style={{ color: "var(--kombu-green)", fontWeight: 600 }}
-            >
-              EcoSevika
-            </p>
-            <p className="tagline" style={{ fontSize: "0.55rem", marginTop: "2px" }}>
-              Threads of Change
-            </p>
-          </div>
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="font-body text-xs font-500 tracking-widest uppercase transition-colors duration-200"
-              style={{ color: "var(--cafe-noir)", letterSpacing: "0.12em" }}
-              onMouseEnter={(e) =>
-                ((e.target as HTMLElement).style.color = "var(--kombu-green)")
-              }
-              onMouseLeave={(e) =>
-                ((e.target as HTMLElement).style.color = "var(--cafe-noir)")
-              }
-            >
+            <Link key={l.href} href={l.href} className="nav-link">
               {l.label}
             </Link>
           ))}
-          <Link href="/products" className="btn-primary" style={{ fontSize: "0.65rem", padding: "0.6rem 1.5rem" }}>
+          <Link
+            href="/products"
+            className="btn-primary"
+            style={{ fontSize: "0.58rem", padding: "0.7rem 1.8rem" }}
+          >
             Shop Now
           </Link>
         </div>
@@ -72,24 +56,24 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           <span
-            className="block w-6 h-0.5 transition-all duration-300"
+            className="block w-5 h-px transition-all duration-300"
             style={{
               backgroundColor: "var(--kombu-green)",
-              transform: open ? "rotate(45deg) translate(4px, 4px)" : "",
+              transform: open ? "rotate(45deg) translate(3px, 4px)" : "",
             }}
           />
           <span
-            className="block w-6 h-0.5 transition-all duration-300"
+            className="block w-5 h-px transition-all duration-300"
             style={{
               backgroundColor: "var(--kombu-green)",
               opacity: open ? 0 : 1,
             }}
           />
           <span
-            className="block w-6 h-0.5 transition-all duration-300"
+            className="block w-5 h-px transition-all duration-300"
             style={{
               backgroundColor: "var(--kombu-green)",
-              transform: open ? "rotate(-45deg) translate(4px, -4px)" : "",
+              transform: open ? "rotate(-45deg) translate(3px, -4px)" : "",
             }}
           />
         </button>
@@ -98,15 +82,14 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div
-          className="md:hidden px-6 pb-6 flex flex-col gap-5"
-          style={{ backgroundColor: "var(--warm-white)", borderTop: "1px solid var(--tan)" }}
+          className="md:hidden px-8 pb-8 flex flex-col gap-6"
+          style={{ backgroundColor: "var(--warm-white)", borderTop: "1px solid rgba(207,187,153,0.4)" }}
         >
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="font-body text-xs uppercase tracking-widest"
-              style={{ color: "var(--cafe-noir)" }}
+              className="nav-link"
               onClick={() => setOpen(false)}
             >
               {l.label}
