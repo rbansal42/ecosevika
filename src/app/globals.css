@@ -346,3 +346,25 @@ h1, h2, h3 {
 @media (hover: none) {
   .cat-card-browse { opacity: 1; transform: none; }
 }
+
+/* ── Skip-to-content link ───────────────────────────── */
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  transform: translateY(-200%);
+  background-color: var(--kombu-green);
+  color: var(--bone);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  z-index: 99999;
+  transition: transform 0.2s ease;
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
