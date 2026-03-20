@@ -1,13 +1,27 @@
 "use client";
 
 import { useState } from "react";
+import type { JSX } from "react";
 import ProductCard from "@/components/ProductCard";
 import BagIllustration from "@/components/illustrations/BagIllustration";
 import CanvasIllustration from "@/components/illustrations/CanvasIllustration";
 import PouchIllustration from "@/components/illustrations/PouchIllustration";
 import ApronIllustration from "@/components/illustrations/ApronIllustration";
+import type { IllustrationProps } from "@/components/illustrations/types";
 
-const categories = [
+type IllustrationComponent = (props: IllustrationProps) => JSX.Element;
+
+interface Category {
+  id: string;
+  label: string;
+  name: string;
+  bg: string;
+  Illustration: IllustrationComponent;
+  materials: string;
+  products: { name: string; description: string; tags: string[] }[];
+}
+
+const categories: Category[] = [
   {
     id: "upcycled-bags",
     label: "I",
@@ -183,6 +197,7 @@ export default function ProductsPage() {
       >
         <button
           onClick={() => setActive("all")}
+          aria-pressed={active === "all"}
           style={{
             fontFamily: "Montserrat, sans-serif",
             fontSize: "0.75rem",
@@ -203,6 +218,7 @@ export default function ProductsPage() {
           <button
             key={cat.id}
             onClick={() => setActive(cat.id)}
+            aria-pressed={active === cat.id}
             style={{
               fontFamily: "Montserrat, sans-serif",
               fontSize: "0.75rem",
