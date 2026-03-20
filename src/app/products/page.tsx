@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
+import BagIllustration from "@/components/illustrations/BagIllustration";
+import CanvasIllustration from "@/components/illustrations/CanvasIllustration";
+import PouchIllustration from "@/components/illustrations/PouchIllustration";
+import ApronIllustration from "@/components/illustrations/ApronIllustration";
 
 const categories = [
   {
@@ -9,6 +13,8 @@ const categories = [
     label: "I",
     name: "Upcycled Bags",
     bg: "var(--bone)",
+    Illustration: BagIllustration,
+    materials: "Upcycled mixed fabric",
     products: [
       {
         name: "Upcycled Tote Bag",
@@ -35,6 +41,8 @@ const categories = [
     label: "II",
     name: "Canvas Cloth Bags",
     bg: "#dce4d2",
+    Illustration: CanvasIllustration,
+    materials: "Natural unbleached canvas",
     products: [
       {
         name: "Natural Canvas Tote",
@@ -61,6 +69,8 @@ const categories = [
     label: "III",
     name: "Pouches",
     bg: "#e4dcd0",
+    Illustration: PouchIllustration,
+    materials: "Upcycled cotton & lining",
     products: [
       {
         name: "Pencil Pouch",
@@ -87,6 +97,8 @@ const categories = [
     label: "IV",
     name: "Aprons",
     bg: "#d4dcc8",
+    Illustration: ApronIllustration,
+    materials: "Upcycled denim & cotton",
     products: [
       {
         name: "Kitchen Apron",
@@ -109,6 +121,8 @@ const categories = [
     ],
   },
 ];
+
+const totalCount = categories.reduce((sum, c) => sum + c.products.length, 0);
 
 export default function ProductsPage() {
   const [active, setActive] = useState<string>("all");
@@ -152,27 +166,46 @@ export default function ProductsPage() {
               lineHeight: 1.85,
             }}
           >
-            Photos coming soon — each product is made to order. Enquire via
+            Every piece is made to your order — no two alike. Message us on
             WhatsApp and we&apos;ll share details, customisation options, and pricing.
           </p>
         </div>
       </section>
 
       {/* ── Filter tabs ────────────────────────────────── */}
-      <div
+      <nav
+        aria-label="Filter by category"
         className="sticky top-16 z-40 py-4 px-8 flex flex-wrap gap-2"
         style={{
           backgroundColor: "var(--warm-white)",
           borderBottom: "1px solid rgba(207,187,153,0.4)",
         }}
       >
-        {[{ id: "all", name: "All" }, ...categories].map((cat) => (
+        <button
+          onClick={() => setActive("all")}
+          style={{
+            fontFamily: "Montserrat, sans-serif",
+            fontSize: "0.75rem",
+            fontWeight: 600,
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            padding: "0.55rem 1.4rem",
+            cursor: "pointer",
+            backgroundColor: active === "all" ? "var(--kombu-green)" : "transparent",
+            color: active === "all" ? "var(--bone)" : "var(--kombu-green)",
+            border: "1px solid var(--kombu-green)",
+            transition: "background-color 0.25s ease, color 0.25s ease",
+          }}
+        >
+          All · {totalCount}
+        </button>
+        {categories.map((cat) => (
           <button
             key={cat.id}
             onClick={() => setActive(cat.id)}
             style={{
               fontFamily: "Montserrat, sans-serif",
-              fontSize: "0.58rem",
+              fontSize: "0.75rem",
               fontWeight: 600,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
@@ -184,10 +217,10 @@ export default function ProductsPage() {
               transition: "background-color 0.25s ease, color 0.25s ease",
             }}
           >
-            {cat.name}
+            {cat.name} · {cat.products.length}
           </button>
         ))}
-      </div>
+      </nav>
 
       {/* ── Products ───────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-8 py-16">
@@ -235,6 +268,8 @@ export default function ProductsPage() {
                   description={p.description}
                   categoryBg={cat.bg}
                   tags={p.tags}
+                  Illustration={cat.Illustration}
+                  materials={cat.materials}
                 />
               ))}
             </div>
