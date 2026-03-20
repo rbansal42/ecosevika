@@ -65,7 +65,7 @@ export default function ContactPage() {
                 </svg>
               </div>
               <div>
-                <p className="tagline mb-2" style={{ color: "var(--moss-green)", fontSize: "0.56rem" }}>
+                <p className="tagline mb-2" style={{ color: "var(--moss-green)" }}>
                   Fastest response
                 </p>
                 <h3
@@ -91,7 +91,7 @@ export default function ContactPage() {
                 <p
                   style={{
                     fontFamily: "Montserrat, sans-serif",
-                    fontSize: "0.68rem",
+                    fontSize: "0.75rem",
                     color: "var(--cafe-noir)",
                     opacity: 0.65,
                     lineHeight: 1.8,
@@ -128,7 +128,7 @@ export default function ContactPage() {
                 </svg>
               </div>
               <div>
-                <p className="tagline mb-2" style={{ color: "var(--moss-green)", fontSize: "0.56rem" }}>
+                <p className="tagline mb-2" style={{ color: "var(--moss-green)" }}>
                   For detailed queries
                 </p>
                 <h3
@@ -141,7 +141,7 @@ export default function ContactPage() {
                   className="mb-3 break-all"
                   style={{
                     fontFamily: "Montserrat, sans-serif",
-                    fontSize: "0.72rem",
+                    fontSize: "0.75rem",
                     color: "var(--cafe-noir)",
                     letterSpacing: "0.02em",
                   }}
@@ -151,7 +151,7 @@ export default function ContactPage() {
                 <p
                   style={{
                     fontFamily: "Montserrat, sans-serif",
-                    fontSize: "0.68rem",
+                    fontSize: "0.75rem",
                     color: "var(--cafe-noir)",
                     opacity: 0.65,
                     lineHeight: 1.8,
@@ -191,7 +191,7 @@ export default function ContactPage() {
           <p
             style={{
               fontFamily: "Montserrat, sans-serif",
-              fontSize: "0.68rem",
+              fontSize: "0.75rem",
               color: "var(--tan)",
               opacity: 0.8,
               lineHeight: 1.8,

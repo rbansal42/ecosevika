@@ -258,7 +258,7 @@ export default function Home() {
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           style={{ opacity: 0.35 }}
         >
-          <span className="tagline" style={{ fontSize: "0.5rem", letterSpacing: "0.25em" }}>Scroll</span>
+          <span className="tagline" style={{ letterSpacing: "0.25em" }}>Scroll</span>
           <div style={{ width: "1px", height: "32px", backgroundColor: "var(--moss-green)" }} />
         </div>
       </section>
@@ -314,7 +314,7 @@ export default function Home() {
                 <p
                   style={{
                     fontFamily: "Montserrat, sans-serif",
-                    fontSize: "0.72rem",
+                    fontSize: "0.75rem",
                     color: "var(--tan)",
                     opacity: 0.8,
                     lineHeight: 1.8,
@@ -350,7 +350,7 @@ export default function Home() {
             <Link
               href="/products"
               className="nav-link"
-              style={{ fontSize: "0.62rem", letterSpacing: "0.2em" }}
+              style={{ fontSize: "0.75rem", letterSpacing: "0.2em" }}
             >
               View all products →
             </Link>
@@ -409,7 +409,7 @@ export default function Home() {
                   <p
                     style={{
                       fontFamily: "Montserrat, sans-serif",
-                      fontSize: "0.68rem",
+                      fontSize: "0.75rem",
                       color: "var(--cafe-noir)",
                       opacity: 0.65,
                       lineHeight: 1.7,
@@ -420,7 +420,7 @@ export default function Home() {
                   </p>
                   <span
                     className="cat-card-browse tagline"
-                    style={{ color: "var(--moss-green)", fontSize: "0.55rem" }}
+                    style={{ color: "var(--moss-green)" }}
                   >
                     Browse collection →
                   </span>
@@ -588,7 +588,7 @@ export default function Home() {
                 className="leading-relaxed mb-8"
                 style={{
                   fontFamily: "Montserrat, sans-serif",
-                  fontSize: "0.72rem",
+                  fontSize: "0.75rem",
                   color: "var(--cafe-noir)",
                   opacity: 0.75,
                   lineHeight: 1.85,

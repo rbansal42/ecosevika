@@ -37,14 +37,14 @@ export default function Footer() {
           </p>
           <p
             className="tagline mb-5"
-            style={{ color: "var(--moss-green)", fontSize: "0.52rem" }}
+            style={{ color: "var(--moss-green)" }}
           >
             Threads of Change
           </p>
           <p
             style={{
               fontFamily: "Montserrat, sans-serif",
-              fontSize: "0.68rem",
+              fontSize: "0.75rem",
               color: "var(--tan)",
               opacity: 0.7,
               lineHeight: 1.8,
@@ -57,7 +57,7 @@ export default function Footer() {
 
         {/* Navigation */}
         <div>
-          <p className="tagline mb-6" style={{ color: "var(--tan)", opacity: 0.5, fontSize: "0.52rem" }}>
+          <p className="tagline mb-6" style={{ color: "var(--tan)", opacity: 0.5 }}>
             Explore
           </p>
           <div className="flex flex-col gap-3.5">
@@ -76,7 +76,7 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <p className="tagline mb-6" style={{ color: "var(--tan)", opacity: 0.5, fontSize: "0.52rem" }}>
+          <p className="tagline mb-6" style={{ color: "var(--tan)", opacity: 0.5 }}>
             Get in Touch
           </p>
           <div className="flex flex-col gap-3.5">
@@ -98,7 +98,7 @@ export default function Footer() {
             <p
               style={{
                 fontFamily: "Montserrat, sans-serif",
-                fontSize: "0.62rem",
+                fontSize: "0.75rem",
                 color: "var(--tan)",
                 opacity: 0.45,
               }}
@@ -117,7 +117,7 @@ export default function Footer() {
         <p
           style={{
             fontFamily: "Montserrat, sans-serif",
-            fontSize: "0.6rem",
+            fontSize: "0.75rem",
             color: "var(--tan)",
             opacity: 0.4,
             letterSpacing: "0.06em",
@@ -138,7 +138,7 @@ export default function Footer() {
         <p
           style={{
             fontFamily: "Montserrat, sans-serif",
-            fontSize: "0.6rem",
+            fontSize: "0.75rem",
             color: "var(--tan)",
             opacity: 0.3,
             letterSpacing: "0.06em",

@@ -143,7 +143,7 @@ export default function StoryPage() {
                 <div className="flex-1 pt-2">
                   <p
                     className="tagline mb-3"
-                    style={{ color: "var(--moss-green)", fontSize: "0.58rem" }}
+                    style={{ color: "var(--moss-green)" }}
                   >
                     {m.label}
                   </p>
@@ -161,7 +161,7 @@ export default function StoryPage() {
                   <p
                     style={{
                       fontFamily: "Montserrat, sans-serif",
-                      fontSize: "0.73rem",
+                      fontSize: "0.75rem",
                       color: "var(--cafe-noir)",
                       opacity: 0.75,
                       lineHeight: 1.9,
@@ -233,7 +233,7 @@ export default function StoryPage() {
                 <p
                   style={{
                     fontFamily: "Montserrat, sans-serif",
-                    fontSize: "0.7rem",
+                    fontSize: "0.75rem",
                     color: "var(--cafe-noir)",
                     opacity: 0.75,
                     lineHeight: 1.9,
@@ -272,7 +272,7 @@ export default function StoryPage() {
               className="mb-8 leading-relaxed"
               style={{
                 fontFamily: "Montserrat, sans-serif",
-                fontSize: "0.73rem",
+                fontSize: "0.75rem",
                 color: "var(--tan)",
                 opacity: 0.85,
                 lineHeight: 1.9,
