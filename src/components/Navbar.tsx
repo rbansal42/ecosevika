@@ -88,6 +88,21 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
+          <a
+            href="https://www.instagram.com/eco.sevika/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="EcoSevika on Instagram"
+            style={{ display: "inline-flex", alignItems: "center", opacity: 0.7, transition: "opacity 0.2s ease" }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#354024" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
           <Link
             href="/products"
             className="btn-primary"
@@ -147,6 +162,21 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
+          <a
+            href="https://www.instagram.com/eco.sevika/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-link"
+            tabIndex={open ? 0 : -1}
+            style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#354024" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+            Instagram
+          </a>
           <Link
             href="/products"
             className="btn-primary text-center"

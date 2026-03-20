@@ -245,6 +245,10 @@ h1, h2, h3 {
   transform: translateY(-5px);
   box-shadow: 0 16px 48px rgba(53, 64, 36, 0.11);
 }
+.product-card:active {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(53, 64, 36, 0.11);
+}
 
 .contact-card {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
