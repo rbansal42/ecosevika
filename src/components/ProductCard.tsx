@@ -1,10 +1,16 @@
+import type { JSX } from "react";
 import { whatsappUrl } from "@/lib/constants";
+import type { IllustrationProps } from "./illustrations/types";
+
+type IllustrationComponent = (props: IllustrationProps) => JSX.Element;
 
 interface ProductCardProps {
   name: string;
   description: string;
   categoryBg: string;
   tags?: string[];
+  Illustration: IllustrationComponent;
+  materials?: string;
 }
 
 export default function ProductCard({
@@ -12,8 +18,12 @@ export default function ProductCard({
   description,
   categoryBg,
   tags = [],
+  Illustration,
+  materials,
 }: ProductCardProps) {
-  const url = whatsappUrl(`Hi, I'm interested in the EcoSevika ${name}. Can you share more details?`);
+  const url = whatsappUrl(
+    `Hi, I'm interested in the EcoSevika ${name}. Can you share more details?`
+  );
 
   return (
     <div
@@ -23,65 +33,34 @@ export default function ProductCard({
         border: "1px solid rgba(207,187,153,0.5)",
       }}
     >
-      {/* Placeholder visual */}
+      {/* Visual area */}
       <div
-        className="w-full relative overflow-hidden flex flex-col items-center justify-center gap-3"
-        style={{ backgroundColor: categoryBg, height: "200px" }}
+        className="w-full flex items-center justify-center"
+        style={{
+          backgroundColor: categoryBg,
+          height: "200px",
+          position: "relative",
+          overflow: "hidden",
+        }}
       >
-        {/* Woven texture */}
-        <svg
-          viewBox="0 0 200 200"
-          className="absolute inset-0 w-full h-full"
-          preserveAspectRatio="xMidYMid slice"
-          aria-hidden="true"
-        >
-          {Array.from({ length: 10 }).map((_, i) => (
-            <line
-              key={`h${i}`}
-              x1="0" y1={20 * i + 10}
-              x2="200" y2={20 * i + 10}
-              stroke="#354024" strokeWidth="0.4" opacity="0.12"
-            />
-          ))}
-          {Array.from({ length: 10 }).map((_, i) => (
-            <line
-              key={`v${i}`}
-              x1={20 * i + 10} y1="0"
-              x2={20 * i + 10} y2="200"
-              stroke="#354024" strokeWidth="0.4" opacity="0.12"
-            />
-          ))}
-        </svg>
+        <Illustration className="w-24 h-24" style={{ opacity: 0.45 }} />
 
-        {/* Ghost product name */}
-        <p
-          className="font-display relative z-10 text-center px-4"
+        {/* Made to order pill */}
+        <span
+          className="tagline"
           style={{
-            fontSize: "1.1rem",
-            fontWeight: 400,
-            fontStyle: "italic",
+            position: "absolute",
+            bottom: "0.75rem",
+            left: "0.75rem",
+            zIndex: 10,
             color: "var(--kombu-green)",
-            opacity: 0.35,
-            lineHeight: 1.3,
+            backgroundColor: "rgba(245,240,232,0.85)",
+            padding: "0.2rem 0.6rem",
+            borderRadius: "2px",
           }}
         >
-          {name}
-        </p>
-
-        {/* Made-to-order badge */}
-        <p
-          className="relative z-10 tagline"
-          style={{
-            fontSize: "0.6rem",
-            letterSpacing: "0.18em",
-            color: "var(--kombu-green)",
-            opacity: 0.5,
-            backgroundColor: "rgba(245,240,232,0.7)",
-            padding: "0.25rem 0.75rem",
-          }}
-        >
-          Made to order · Photo coming soon
-        </p>
+          Made to order
+        </span>
       </div>
 
       {/* Content */}
@@ -96,45 +75,63 @@ export default function ProductCard({
         >
           {name}
         </h3>
-        <p
-          className="flex-1 mb-4 leading-relaxed"
-          style={{
-            fontFamily: "Montserrat, sans-serif",
-            fontSize: "0.75rem",
-            color: "var(--cafe-noir)",
-            opacity: 0.75,
-            lineHeight: 1.8,
-          }}
-        >
-          {description}
-        </p>
 
-        {/* Tags — semantic list */}
-        {tags.length > 0 && (
-          <ul
-            role="list"
-            className="flex flex-wrap gap-1.5 mb-5"
-            style={{ listStyle: "none", padding: 0, margin: 0 }}
+        {/* Wrap middle content to push CTA to bottom */}
+        <div className="flex-1 flex flex-col">
+          <p
+            className="mb-2 leading-relaxed"
+            style={{
+              fontFamily: "Montserrat, sans-serif",
+              fontSize: "0.75rem",
+              color: "var(--cafe-noir)",
+              opacity: 0.75,
+              lineHeight: 1.8,
+            }}
           >
-            {tags.map((tag) => (
-              <li
-                key={tag}
-                style={{
-                  fontFamily: "Montserrat, sans-serif",
-                  fontSize: "0.62rem",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "var(--moss-green)",
-                  backgroundColor: "var(--bone)",
-                  border: "1px solid rgba(207,187,153,0.6)",
-                  padding: "0.25rem 0.6rem",
-                }}
-              >
-                {tag}
-              </li>
-            ))}
-          </ul>
-        )}
+            {description}
+          </p>
+
+          {materials && (
+            <p
+              className="mb-4"
+              style={{
+                fontFamily: "Montserrat, sans-serif",
+                fontSize: "0.75rem",
+                color: "var(--moss-green)",
+                opacity: 0.85,
+              }}
+            >
+              {materials}
+            </p>
+          )}
+
+          {/* Tags */}
+          {tags.length > 0 && (
+            <ul
+              role="list"
+              className="flex flex-wrap gap-1.5 mt-auto mb-5"
+              style={{ listStyle: "none", padding: 0, margin: 0 }}
+            >
+              {tags.map((tag) => (
+                <li
+                  key={tag}
+                  style={{
+                    fontFamily: "Montserrat, sans-serif",
+                    fontSize: "0.75rem",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: "var(--moss-green)",
+                    backgroundColor: "var(--bone)",
+                    border: "1px solid rgba(207,187,153,0.6)",
+                    padding: "0.25rem 0.6rem",
+                  }}
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
 
         {/* WhatsApp CTA */}
         <a href={url} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
