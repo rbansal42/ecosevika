@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { whatsappUrl } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Contact — EcoSevika",
@@ -41,7 +42,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           {/* WhatsApp */}
           <a
-            href="https://wa.me/919667545342?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20EcoSevika%20products."
+            href={whatsappUrl("Hi, I'd like to enquire about EcoSevika products.")}
             target="_blank"
             rel="noopener noreferrer"
             className="contact-card p-10"
