@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     type: "website",
   },
+  other: { 'instagram:site': '@eco.sevika' },
 };
 
 export default function RootLayout({

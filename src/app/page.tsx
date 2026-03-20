@@ -212,7 +212,7 @@ export default function Home() {
         {/* Bottom scroll hint */}
         <div
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-          style={{ opacity: 0.35 }}
+          style={{ opacity: 0.55 }}
         >
           <span className="tagline" style={{ letterSpacing: "0.25em" }}>Scroll</span>
           <div style={{ width: "1px", height: "32px", backgroundColor: "var(--moss-green)" }} />
