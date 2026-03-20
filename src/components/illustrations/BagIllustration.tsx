@@ -1,11 +1,6 @@
-import type { CSSProperties } from "react";
+import type { IllustrationProps } from "./types";
 
-interface Props {
-  className?: string;
-  style?: CSSProperties;
-}
-
-export default function BagIllustration({ className, style }: Props) {
+export default function BagIllustration({ className, style }: IllustrationProps) {
   return (
     <svg viewBox="0 0 160 160" fill="none" className={className} style={style} aria-hidden="true">
       <path d="M50 65 L110 65 L120 130 L40 130 Z" stroke="#354024" strokeWidth="1.5" />

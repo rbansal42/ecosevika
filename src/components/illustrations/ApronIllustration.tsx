@@ -1,11 +1,6 @@
-import type { CSSProperties } from "react";
+import type { IllustrationProps } from "./types";
 
-interface Props {
-  className?: string;
-  style?: CSSProperties;
-}
-
-export default function ApronIllustration({ className, style }: Props) {
+export default function ApronIllustration({ className, style }: IllustrationProps) {
   return (
     <svg viewBox="0 0 160 160" fill="none" className={className} style={style} aria-hidden="true">
       <path d="M55 45 L105 45 L115 140 L45 140 Z" stroke="#354024" strokeWidth="1.5" />

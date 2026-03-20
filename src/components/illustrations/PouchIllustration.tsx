@@ -1,11 +1,6 @@
-import type { CSSProperties } from "react";
+import type { IllustrationProps } from "./types";
 
-interface Props {
-  className?: string;
-  style?: CSSProperties;
-}
-
-export default function PouchIllustration({ className, style }: Props) {
+export default function PouchIllustration({ className, style }: IllustrationProps) {
   return (
     <svg viewBox="0 0 160 160" fill="none" className={className} style={style} aria-hidden="true">
       <rect x="45" y="72" width="70" height="58" rx="4" stroke="#354024" strokeWidth="1.5" />
