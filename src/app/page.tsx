@@ -1,4 +1,8 @@
 import Link from "next/link";
+import BagIllustration from "@/components/illustrations/BagIllustration";
+import CanvasIllustration from "@/components/illustrations/CanvasIllustration";
+import PouchIllustration from "@/components/illustrations/PouchIllustration";
+import ApronIllustration from "@/components/illustrations/ApronIllustration";
 
 /* ── Botanical SVG — hero right column ───────────────── */
 function BotanicalHero() {
@@ -87,54 +91,6 @@ function BotanicalHero() {
   );
 }
 
-/* ── Category card SVGs ───────────────────────────────── */
-function BagSvg() {
-  return (
-    <svg viewBox="0 0 160 160" fill="none" className="w-24 h-24 opacity-30" aria-hidden="true">
-      <path d="M50 65 L110 65 L120 130 L40 130 Z" stroke="#354024" strokeWidth="1.5" />
-      <path d="M65 65 C65 50 95 50 95 65" stroke="#354024" strokeWidth="1.5" />
-      <line x1="40" y1="90" x2="120" y2="90" stroke="#354024" strokeWidth="0.8" />
-      <line x1="75" y1="90" x2="75" y2="130" stroke="#354024" strokeWidth="0.8" />
-      <line x1="85" y1="90" x2="85" y2="130" stroke="#354024" strokeWidth="0.8" />
-    </svg>
-  );
-}
-function CanvasSvg() {
-  return (
-    <svg viewBox="0 0 160 160" fill="none" className="w-24 h-24 opacity-30" aria-hidden="true">
-      <rect x="40" y="60" width="80" height="75" rx="1" stroke="#354024" strokeWidth="1.5" />
-      <path d="M60 60 C60 48 100 48 100 60" stroke="#354024" strokeWidth="1.5" />
-      {[72, 80, 88, 96, 104].map((y) => (
-        <line key={y} x1="40" y1={y} x2="120" y2={y} stroke="#354024" strokeWidth="0.5" opacity="0.5" />
-      ))}
-      {[52, 60, 68, 76, 84, 92, 100, 108, 116].map((x) => (
-        <line key={x} x1={x} y1="60" x2={x} y2="135" stroke="#354024" strokeWidth="0.5" opacity="0.5" />
-      ))}
-    </svg>
-  );
-}
-function PouchSvg() {
-  return (
-    <svg viewBox="0 0 160 160" fill="none" className="w-24 h-24 opacity-30" aria-hidden="true">
-      <rect x="45" y="72" width="70" height="58" rx="4" stroke="#354024" strokeWidth="1.5" />
-      <line x1="45" y1="88" x2="115" y2="88" stroke="#354024" strokeWidth="1.2" />
-      <circle cx="80" cy="80" r="4" stroke="#354024" strokeWidth="1" />
-      <path d="M60 72 L60 62 Q80 52 100 62 L100 72" stroke="#354024" strokeWidth="1.2" fill="none" />
-    </svg>
-  );
-}
-function ApronSvg() {
-  return (
-    <svg viewBox="0 0 160 160" fill="none" className="w-24 h-24 opacity-30" aria-hidden="true">
-      <path d="M55 45 L105 45 L115 140 L45 140 Z" stroke="#354024" strokeWidth="1.5" />
-      <path d="M55 45 C55 38 65 33 80 33 C95 33 105 38 105 45" stroke="#354024" strokeWidth="1.5" />
-      <rect x="62" y="90" width="36" height="28" rx="1" stroke="#354024" strokeWidth="1" />
-      <line x1="70" y1="58" x2="90" y2="58" stroke="#354024" strokeWidth="0.8" />
-      <line x1="80" y1="45" x2="80" y2="140" stroke="#354024" strokeWidth="0.6" opacity="0.4" />
-    </svg>
-  );
-}
-
 const categories = [
   {
     id: "upcycled-bags",
@@ -143,7 +99,7 @@ const categories = [
     description: "Handstitched from reclaimed fabric. Each one truly one-of-a-kind.",
     href: "/products?category=upcycled-bags",
     bg: "var(--bone)",
-    Illustration: BagSvg,
+    Illustration: BagIllustration,
   },
   {
     id: "canvas-bags",
@@ -152,7 +108,7 @@ const categories = [
     description: "Sturdy, reusable canvas — the sustainable alternative.",
     href: "/products?category=canvas-bags",
     bg: "#dce4d2",
-    Illustration: CanvasSvg,
+    Illustration: CanvasIllustration,
   },
   {
     id: "pouches",
@@ -161,7 +117,7 @@ const categories = [
     description: "Pencil cases, cosmetics pouches, travel organisers.",
     href: "/products?category=pouches",
     bg: "#e4dcd0",
-    Illustration: PouchSvg,
+    Illustration: PouchIllustration,
   },
   {
     id: "aprons",
@@ -170,7 +126,7 @@ const categories = [
     description: "Kitchen and studio aprons — upcycled denim and cotton.",
     href: "/products?category=aprons",
     bg: "#d4dcc8",
-    Illustration: ApronSvg,
+    Illustration: ApronIllustration,
   },
 ];
 
@@ -386,7 +342,7 @@ export default function Home() {
                   >
                     {cat.label}
                   </p>
-                  <cat.Illustration />
+                  <cat.Illustration className="w-24 h-24" style={{ opacity: 0.30 }} />
                 </div>
 
                 {/* Card text */}
