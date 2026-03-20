@@ -367,4 +367,6 @@ h1, h2, h3 {
 }
 .skip-link:focus-visible {
   transform: translateY(0);
+  outline: 2px solid var(--bone);
+  outline-offset: 3px;
 }
