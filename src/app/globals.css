@@ -293,6 +293,19 @@ h1, h2, h3 {
   border-radius: 1px;
 }
 
+/* ── Mobile menu animation ──────────────────────────── */
+.mobile-menu {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease, border-top-color 0.3s ease;
+}
+.mobile-menu--open {
+  max-height: 500px;
+  opacity: 1;
+  border-top: 1px solid rgba(207, 187, 153, 0.4);
+}
+
 /* Footer link — light on dark background */
 .footer-link {
   font-family: 'Montserrat', sans-serif;

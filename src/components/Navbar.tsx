@@ -2,18 +2,53 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const navRef = useRef<HTMLElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   // Scroll-lock when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
+
+  // Close on Escape key
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && open) {
+        setOpen(false);
+        buttonRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [open]);
+
+  // Close on click outside
+  useEffect(() => {
+    const handleOutside = (e: MouseEvent | TouchEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node) && open) {
+        setOpen(false);
+        buttonRef.current?.focus();
+      }
+    };
+    document.addEventListener("mousedown", handleOutside);
+    document.addEventListener("touchstart", handleOutside, { passive: true });
+    return () => {
+      document.removeEventListener("mousedown", handleOutside);
+      document.removeEventListener("touchstart", handleOutside);
+    };
+  }, [open]);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   const links = [
     { href: "/", label: "Home" },
@@ -24,6 +59,7 @@ export default function Navbar() {
 
   return (
     <nav
+      ref={navRef}
       style={{ backgroundColor: "var(--warm-white)", borderBottom: "1px solid rgba(207,187,153,0.4)" }}
       className="sticky top-0 z-50"
     >
@@ -63,9 +99,10 @@ export default function Navbar() {
 
         {/* Mobile hamburger */}
         <button
+          ref={buttonRef}
           className="md:hidden flex flex-col gap-1.5 p-2"
           onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
           <span
@@ -92,27 +129,34 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {open && (
-        <div
-          className="md:hidden px-8 pb-8 flex flex-col gap-6"
-          style={{ backgroundColor: "var(--warm-white)", borderTop: "1px solid rgba(207,187,153,0.4)" }}
-        >
+      {/* Mobile menu — always rendered, animated via CSS */}
+      <div
+        className={`md:hidden mobile-menu${open ? " mobile-menu--open" : ""}`}
+        style={{ backgroundColor: "var(--warm-white)" }}
+        aria-hidden={!open}
+      >
+        <div className="px-8 pb-8 pt-4 flex flex-col gap-6">
           {links.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               className={`nav-link${pathname === l.href ? " nav-link--active" : ""}`}
+              tabIndex={open ? 0 : -1}
               onClick={() => setOpen(false)}
             >
               {l.label}
             </Link>
           ))}
-          <Link href="/products" className="btn-primary text-center" onClick={() => setOpen(false)}>
+          <Link
+            href="/products"
+            className="btn-primary text-center"
+            tabIndex={open ? 0 : -1}
+            onClick={() => setOpen(false)}
+          >
             Shop Now
           </Link>
         </div>
-      )}
+      </div>
     </nav>
   );
 }
