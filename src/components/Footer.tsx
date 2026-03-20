@@ -19,7 +19,7 @@ export default function Footer() {
         >
           EcoSevika
         </p>
-        <p className="tagline" style={{ color: "var(--moss-green)" }}>
+        <p className="tagline" style={{ color: "var(--tan)" }}>
           Threads of Change
         </p>
       </div>

@@ -73,17 +73,20 @@ export default function ContactPage() {
                 >
                   WhatsApp
                 </h3>
-                <p
-                  className="mb-3"
-                  style={{
-                    fontFamily: "Montserrat, sans-serif",
-                    fontSize: "0.8rem",
-                    color: "var(--cafe-noir)",
-                    letterSpacing: "0.04em",
-                  }}
-                >
-                  +91 96675 45342
-                </p>
+                <div className="flex flex-wrap items-center gap-3 mb-3">
+                  <a
+                    href="tel:+919667545342"
+                    style={{
+                      fontFamily: "Montserrat, sans-serif",
+                      fontSize: "0.8rem",
+                      color: "var(--cafe-noir)",
+                      letterSpacing: "0.04em",
+                      textDecoration: "none",
+                    }}
+                  >
+                    +91 96675 45342
+                  </a>
+                </div>
                 <p
                   style={{
                     fontFamily: "Montserrat, sans-serif",
