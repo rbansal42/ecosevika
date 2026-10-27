@@ -158,7 +158,16 @@ export default function Footer() {
             letterSpacing: "0.06em",
           }}
         >
-          &copy; {new Date().getFullYear()} EcoSevika
+          &copy; {new Date().getFullYear()} EcoSevika &middot; Built by{" "}
+          <a
+            href="https://roundrobin.in"
+            target="_blank"
+            rel="noopener"
+            className="footer-link"
+            style={{ textDecoration: "underline", textUnderlineOffset: "2px" }}
+          >
+            Round Robin
+          </a>
         </p>
       </div>
     </footer>
